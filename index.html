@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bioelectronics Lab | IISc Bangalore</title>
+  <meta name="description" content="Bioelectronics Lab at IISc Bangalore (IAP): flexible neurotechnologies for bioelectronic medicine, cancer neuroscience, thin-film implant translation, and biohybrid neural implants." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f7f5f1;
+      --surface: #ffffff;
+      --ink: #1a2332;
+      --muted: #5a6577;
+      --line: #e2ddd4;
+      --accent: #0f5c63;
+      --accent-soft: #d8ecee;
+      --accent-dark: #0a3f44;
+      --highlight: #c45c26;
+      --max: 920px;
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(26, 35, 50, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, #dfeff1 0%, transparent 55%),
+        radial-gradient(900px 400px at 100% 0%, #f3e7dc 0%, transparent 50%),
+        var(--bg);
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: var(--accent-dark); }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 2.5rem));
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(247, 245, 241, 0.85);
+      border-bottom: 1px solid rgba(226, 221, 212, 0.8);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: inherit;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(145deg, var(--accent), #1f8a84);
+      position: relative;
+      flex: 0 0 auto;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+    }
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+    }
+    .brand-mark::before {
+      width: 14px; height: 2px; left: 10px; top: 16px;
+      box-shadow: 0 -5px 0 rgba(255,255,255,0.7), 0 5px 0 rgba(255,255,255,0.7);
+    }
+    .brand-mark::after {
+      width: 6px; height: 6px; right: 8px; top: 8px;
+      box-shadow: -8px 10px 0 0 rgba(255,255,255,0.55);
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 1rem;
+      font-size: 0.92rem;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover { color: var(--accent); }
+
+    /* Hero */
+    .hero {
+      padding: 3.25rem 0 2.5rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: "IBM Plex Serif", Georgia, serif;
+      font-size: clamp(2.1rem, 5vw, 3.1rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin: 0.9rem 0 0.7rem;
+      max-width: 14ch;
+    }
+    .hero .tagline {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 42rem;
+      margin: 0 0 1.4rem;
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .chip {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      border-radius: 999px;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.9rem;
+      color: var(--ink);
+      box-shadow: var(--shadow);
+    }
+    .chip strong { color: var(--accent-dark); font-weight: 600; }
+
+    section {
+      padding: 2.4rem 0;
+    }
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: clamp(1.4rem, 3vw, 2rem);
+      box-shadow: var(--shadow);
+    }
+    h2 {
+      font-family: "IBM Plex Serif", Georgia, serif;
+      font-size: 1.7rem;
+      letter-spacing: -0.015em;
+      margin: 0 0 0.85rem;
+    }
+    h3 {
+      font-size: 1.12rem;
+      margin: 0 0 0.55rem;
+      color: var(--accent-dark);
+    }
+    h4 {
+      font-size: 1.02rem;
+      margin: 1.35rem 0 0.55rem;
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .lead {
+      color: var(--muted);
+      margin: 0 0 1.2rem;
+    }
+    .thrust-stack {
+      display: grid;
+      gap: 1rem;
+    }
+    .thrust {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem 1.05rem;
+      background: linear-gradient(180deg, #fff, #fbfaf8);
+    }
+    .thrust .num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--highlight);
+      margin-bottom: 0.35rem;
+    }
+    .thrust p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+    .segment + .segment {
+      margin-top: 1.75rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--line);
+    }
+    .pub-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.9rem 0 0;
+      display: grid;
+      gap: 0.85rem;
+    }
+    .pub {
+      padding: 0.9rem 1rem;
+      border-radius: 12px;
+      background: #f8fafb;
+      border: 1px solid #e7ecee;
+    }
+    .pub .title {
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      display: inline;
+    }
+    .pub .title:hover { color: var(--accent); }
+    .pub .meta {
+      margin-top: 0.35rem;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+    .pub .authors { margin-top: 0.25rem; font-size: 0.9rem; color: #3d4758; }
+    .pub .authors b { color: var(--ink); font-weight: 700; }
+    .note {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin: 1rem 0 0;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 1.5rem 1.75rem;
+      align-items: start;
+    }
+    .about-photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 18px;
+      object-fit: cover;
+      object-position: center 18%;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: #e8eef0;
+    }
+    .about-block p { margin: 0 0 1rem; }
+    .about-block p:last-child { margin-bottom: 0; }
+
+    .expect-list {
+      margin: 0.35rem 0 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+    .expect-list li {
+      margin: 0.35rem 0;
+    }
+    .expect-list li::marker {
+      color: var(--accent);
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.65rem 0.95rem;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+    }
+    .btn:hover { border-color: var(--accent); color: var(--accent-dark); }
+    .btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .btn.primary:hover { background: var(--accent-dark); color: #fff; }
+
+    footer {
+      margin-top: 1rem;
+      padding: 2rem 0 2.6rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    footer .foot-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem 1.5rem;
+    }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(var(--max), calc(100% - 1.5rem)); }
+      .topbar-inner { align-items: flex-start; flex-direction: column; }
+      .hero { padding-top: 2.2rem; }
+      nav { gap: 0.45rem 0.9rem; }
+      .about-layout {
+        grid-template-columns: 1fr;
+        justify-items: start;
+      }
+      .about-photo {
+        width: 180px;
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Bioelectronics Lab</span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#research">Research</a>
+        <a href="#past">Selected research</a>
+        <a href="#phd">PhD students</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <span class="badge">Preliminary lab page</span>
+        <h1>Bioelectronics Lab</h1>
+        <p class="tagline">
+          Flexible neurotechnologies for bioelectronic medicine and cancer
+          neuroscience at the Department of Instrumentation and Applied Physics
+          (IAP), Indian Institute of Science, Bangalore.
+        </p>
+        <div class="meta-row">
+          <span class="chip"><strong>IISc Bangalore</strong> · IAP</span>
+          <span class="chip">Joining <strong>December 2026</strong></span>
+          <span class="chip">Assistant Professor</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="wrap section-card">
+        <h2>About the Lab</h2>
+        <p class="lead">
+          The Bioelectronics Lab will develop flexible neurotechnologies for
+          bioelectronic medicine, in which implantable devices modulate the
+          nervous system to treat conditions such as neurodegeneration,
+          refractory epilepsy and chronic pain. The lab will also pursue
+          neurotechnologies for cancer therapy, building on the growing
+          understanding of how the nervous system influences tumour progression.
+          The lab's work will be organised into three thrust areas.
+        </p>
+        <div class="thrust-stack">
+          <article class="thrust">
+            <div class="num">Thrust 01</div>
+            <h3>Neurotechnologies for cancer neuroscience</h3>
+            <p>
+              The lab will develop multi-well and multi-electrode array platforms
+              tuned for the specific needs of advanced in vitro models, such as
+              brain organoids and neuron–tumour co-cultures. These will serve as
+              advanced tools for neuroscience and cancer neuroscience research.
+              Building on the growing understanding of how the nervous system
+              influences tumour progression, the lab will also pursue
+              neurotechnologies for cancer therapy.
+            </p>
+          </article>
+          <article class="thrust">
+            <div class="num">Thrust 02</div>
+            <h3>Thin-film implants for clinical translation</h3>
+            <p>
+              The lab will address the barriers that keep flexible polymer
+              thin-film implants (polyimide, parylene C) out of the clinic. These
+              films offer far better mechanical compliance with neural tissue than
+              rigid devices and therefore superior long-term stability and
+              integration. The lab will (a) develop high-density interconnects and
+              thin-film front-end electronics, using organic electrochemical
+              transistors, to couple soft probes to rigid backends and reduce
+              wiring complexity; and (b) systematically study failure mechanisms
+              and chronic stability under accelerated aging.
+            </p>
+          </article>
+          <article class="thrust">
+            <div class="num">Thrust 03</div>
+            <h3>Biohybrid neural implants</h3>
+            <p>
+              In the long term, the lab will pursue biohybrid neural implants that
+              combine living tissue with electronics for seamless integration with
+              the host nervous system.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="past">
+      <div class="wrap section-card">
+        <h2>Selected Past Research</h2>
+        <p class="lead">
+          A selection of notable publications, not an exhaustive list. Author
+          lists show <b>Sagnik Middya</b> in bold. The full record is on
+          <a href="https://scholar.google.com/citations?user=8O5ccmYAAAAJ&amp;hl=en" rel="noopener" target="_blank">Google Scholar</a>
+          and <a href="https://orcid.org/0000-0003-1861-6295" rel="noopener" target="_blank">ORCID</a>.
+        </p>
+
+        <div class="segment">
+          <h3>1. Multimodal neural interfaces</h3>
+          <p class="lead" style="margin-bottom:0.4rem">
+            Optically transparent PEDOT:PSS MEAs for combined electrophysiology
+            and advanced microscopy; flexible conducting-polymer µECoG arrays
+            compatible with ultra-high-field MRI; and multi-shank thin-film
+            probes for high-resolution neural recording.
+          </p>
+          <ul class="pub-list">
+            <li class="pub">
+              <a class="title" href="https://doi.org/10.1002/adfm.202417312" rel="noopener" target="_blank">Transparent MEAs for advanced imaging</a>
+              <div class="authors"><b>Sagnik Middya</b>, Alejandro Carnicer‐Lombarte, Stephen Sawiak, Sam Hilton, Vincenzo F. Curto, Damiano G. Barone, Gabriele S. Kaminski Schierle, George G. Malliaras</div>
+              <div class="meta"><em>Advanced Functional Materials</em>, 2025 · <a href="https://doi.org/10.1002/adfm.202417312" rel="noopener" target="_blank">doi:10.1002/adfm.202417312</a></div>
+            </li>
+            <li class="pub">
+              <a class="title" href="https://doi.org/10.1002/aelm.202200883" rel="noopener" target="_blank">Multishank thin-film probes</a>
+              <div class="authors"><b>Sagnik Middya</b>, Alejandro Carnicer‐Lombarte, Vincenzo F. Curto, Sam Hilton, Andreas Genewsky, Alexandra L. Rutz, Damiano G. Barone, Gabriele S. Kaminski Schierle, Anton Sirota, George G. Malliaras</div>
+              <div class="meta"><em>Advanced Electronic Materials</em>, 2022 · <a href="https://doi.org/10.1002/aelm.202200883" rel="noopener" target="_blank">doi:10.1002/aelm.202200883</a></div>
+            </li>
+            <li class="pub">
+              <a class="title" href="https://doi.org/10.1002/advs.202004434" rel="noopener" target="_blank">MEAs for optical microscopy</a>
+              <div class="authors"><b>Sagnik Middya</b>, Vincenzo F. Curto, Ana Fernández‐Villegas, Miranda Robbins, Johannes Gurke, Emma J. M. Moonen, Gabriele S. Kaminski Schierle, George G. Malliaras</div>
+              <div class="meta"><em>Advanced Science</em>, 2021 · <a href="https://doi.org/10.1002/advs.202004434" rel="noopener" target="_blank">doi:10.1002/advs.202004434</a></div>
+            </li>
+            <li class="pub">
+              <a class="title" href="https://doi.org/10.1088/1741-2552/ad618c" rel="noopener" target="_blank">Flexible µECoG for navigation decoding</a>
+              <div class="authors">Yu Tung Lo, Lei Jiang, Ben Woodington, <b>Sagnik Middya</b>, Marcel Braendlein, et al.</div>
+              <div class="meta"><em>Journal of Neural Engineering</em>, 2024 · <a href="https://doi.org/10.1088/1741-2552/ad618c" rel="noopener" target="_blank">doi:10.1088/1741-2552/ad618c</a></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="segment">
+          <h3>2. Advanced in vitro neural interfaces</h3>
+          <p class="lead" style="margin-bottom:0.4rem">
+            Platforms for long-term functional recording from cerebral organoids
+            and engineered neural cultures, including MEA-based systems and
+            spike-sorting methods for high-channel-count recordings.
+          </p>
+          <ul class="pub-list">
+            <li class="pub">
+              <a class="title" href="https://doi.org/10.1002/advs.202519893" rel="noopener" target="_blank">NeuroSuite for cerebral organoids</a>
+              <div class="authors">Belquis Haider, <b>Sagnik Middya</b>, Daniel J. Lloyd‐Davies‐Sánchez, Nino F. Läubli, Sulay Vora, Jakob Träuble, et al.</div>
+              <div class="meta"><em>Advanced Science</em>, 2026 · <a href="https://doi.org/10.1002/advs.202519893" rel="noopener" target="_blank">doi:10.1002/advs.202519893</a></div>
+            </li>
+            <li class="pub">
+              <a class="title" href="https://doi.org/10.1126/sciadv.adr4155" rel="noopener" target="_blank">PseudoSorter spike sorting</a>
+              <div class="authors">Marius Brockhoff, Jakob Träuble, <b>Sagnik Middya</b>, Tanja Fuchsberger, Ana Fernandez-Villegas, Amberley Stephens, Miranda Robbins, et al.</div>
+              <div class="meta"><em>Science Advances</em>, 2025 · <a href="https://doi.org/10.1126/sciadv.adr4155" rel="noopener" target="_blank">doi:10.1126/sciadv.adr4155</a></div>
+            </li>
+            <li class="pub">
+              <a class="title" href="https://doi.org/10.1002/advs.202301756" rel="noopener" target="_blank">Astrocytic network signaling</a>
+              <div class="authors">Nataly Hastings, Yi‐Lin Yu, Botian Huang, <b>Sagnik Middya</b>, Misaki Inaoka, Nadia A. Erkamp, et al.</div>
+              <div class="meta"><em>Advanced Science</em>, 2023 · <a href="https://doi.org/10.1002/advs.202301756" rel="noopener" target="_blank">doi:10.1002/advs.202301756</a></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="segment">
+          <h3>3. Neurotechnologies in cancer</h3>
+          <p class="lead" style="margin-bottom:0.4rem">
+            Implantable neural interfaces used to track glioma progression through
+            chronic neural recordings, and related conference work on the evolution
+            of neuron–glioma circuit dynamics.
+          </p>
+          <ul class="pub-list">
+            <li class="pub">
+              <a class="title" href="https://doi.org/10.64898/2026.07.01.735772" rel="noopener" target="_blank">Neural signatures of glioma progression</a>
+              <div class="authors">Jake P. Stroud, Joshua Bratsch-Prince, Lawrence Coles, <b>Sagnik Middya</b>, Laura Mediavilla, Kiarash Shamardani, et al.</div>
+              <div class="meta"><em>bioRxiv</em> preprint, 2026 · <a href="https://doi.org/10.64898/2026.07.01.735772" rel="noopener" target="_blank">doi:10.64898/2026.07.01.735772</a></div>
+            </li>
+            <li class="pub">
+              <a class="title" href="https://doi.org/10.1093/neuonc/noaf201.0252" rel="noopener" target="_blank">Neuron–glioma circuit dynamics (CNSC-44)</a>
+              <div class="authors">K. Shamardani, M. Keough, E. Jenkins, <b>S. Middya</b>, J. Stroud, S. Subramanian, et al.</div>
+              <div class="meta"><em>Neuro-Oncology</em>, 2025 · conference abstract · <a href="https://doi.org/10.1093/neuonc/noaf201.0252" rel="noopener" target="_blank">doi:10.1093/neuonc/noaf201.0252</a></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="phd">
+      <div class="wrap section-card">
+        <h2>For Prospective PhD Students</h2>
+        <p class="lead">
+          This section is evolving and will be updated as the lab takes shape.
+          The notes below outline what is expected of incoming students, the
+          skills looked for, and what students can expect in return.
+        </p>
+
+        <h4>What I Expect From Incoming PhD Students</h4>
+        <ul class="expect-list">
+          <li>Broad research interests aligned with the group's focus on bioelectronics: developing neurotechnologies, biosensors, wearable sensors and implantable medical devices.</li>
+          <li>Openness to collaborative research across bioengineering and neuroscience, and willingness to learn and train in the relevant topics.</li>
+        </ul>
+
+        <h4>Skills and Experience I Look For</h4>
+        <ul class="expect-list">
+          <li>Prior experience in experimental research projects.</li>
+          <li>Electronics background: intermediate experience with microcontrollers and analog/digital circuits, preferably including project experience beyond under- and post-graduate lab coursework.</li>
+          <li>Biomedical engineering background: hands-on experience with biomedical device instrumentation (amplifiers, filters, signal conditioning circuits) and basic biomedical signal processing.</li>
+          <li>At least beginner-level programming in Python and/or MATLAB.</li>
+          <li>Good to have, but not a hard requirement: hands-on experience in device fabrication or microfabrication.</li>
+        </ul>
+
+        <h4>What You Can Expect</h4>
+        <ul class="expect-list">
+          <li>Training and experience in conventional and thin-film microfabrication at world-class cleanroom facilities such as CeNSE.</li>
+          <li>Work at the frontier of neuromodulation therapies, and on making them achievable in practice by engineering implantable devices.</li>
+          <li>Opportunities to interact and build collaborations with clinicians, neurosurgeons and the surgical medical device industry.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap section-card about-block">
+        <h2>About</h2>
+        <div class="about-layout">
+          <img class="about-photo" src="sagnik.jpg" width="220" height="220" alt="Dr. Sagnik Middya" />
+          <div>
+            <p>
+              Dr. Sagnik Middya completed his B.Tech (2017) in Electronics and Electrical
+              Engineering at IIT Guwahati, where he focused on biosensors for
+              point-of-care diagnostics. He then pursued an M.Res and PhD (2023) in
+              bioelectronics at the University of Cambridge, developing conducting
+              polymer-based multi-modal neural interfaces for neuroscience research.
+              After his doctoral studies, Sagnik joined as an early employee at
+              Coherence Neuro, a Cambridge-based startup specializing in neural
+              interfaces with applications in therapy and management of brain and
+              peripheral cancers. He is currently a postdoctoral researcher at the
+              University of California, San Francisco, where his research centres on
+              cancer neuroscience, investigating the interactions between neurons and
+              brain tumours (glioma) and their impact on cancer progression.
+            </p>
+            <p>
+              He will join the Department of Instrumentation and Applied Physics (IAP)
+              at the Indian Institute of Science (IISc), Bangalore, as an Assistant
+              Professor in December 2026.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap section-card">
+        <h2>Contact &amp; links</h2>
+        <p class="lead">
+          Contact details for the lab will be posted after joining IISc.
+          For publications and researcher profiles, use the links below.
+          Prospective PhD applicants can also see
+          <a href="#phd">For Prospective PhD Students</a>.
+        </p>
+        <div class="links">
+          <a class="btn primary" href="https://scholar.google.com/citations?user=8O5ccmYAAAAJ&amp;hl=en" rel="noopener" target="_blank">Google Scholar</a>
+          <a class="btn" href="https://orcid.org/0000-0003-1861-6295" rel="noopener" target="_blank">ORCID</a>
+          <a class="btn" href="https://iap.iisc.ac.in/" rel="noopener" target="_blank">IAP, IISc</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot-grid">
+      <div>© 2026 Bioelectronics Lab · IISc Bangalore (IAP)</div>
+      <div>Last updated November 2026 · Preliminary page</div>
+    </div>
+  </footer>
+</body>
+</html>

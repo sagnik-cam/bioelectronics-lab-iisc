@@ -274,6 +274,13 @@
     .expect-list li::marker {
       color: var(--accent);
     }
+    .expect-group {
+      margin: 1.05rem 0 0.15rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--muted);
+    }
 
     .links {
       display: flex;
@@ -528,11 +535,25 @@
 
         <h4>Skills and Experience I Look For</h4>
         <ul class="expect-list">
-          <li>Prior experience in experimental research projects.</li>
-          <li>Electronics background: intermediate experience with microcontrollers and analog/digital circuits, preferably including project experience beyond under- and post-graduate lab coursework.</li>
-          <li>Biomedical engineering background: hands-on experience with biomedical device instrumentation (amplifiers, filters, signal conditioning circuits) and basic biomedical signal processing.</li>
+          <li>Prior experience in experimental research projects, ideally involving building or testing hardware, collecting data, and analysing it.</li>
           <li>At least beginner-level programming in Python and/or MATLAB.</li>
-          <li>Good to have, but not a hard requirement: hands-on experience in device fabrication or microfabrication.</li>
+        </ul>
+        <h5 class="expect-group">Electronics or electrical engineering background</h5>
+        <ul class="expect-list">
+          <li>Coursework in analog circuits (op-amps, filters, instrumentation amplifiers), digital electronics, and signals and systems and/or digital signal processing.</li>
+          <li>Intermediate microcontroller or embedded-systems experience, preferably beyond standard lab coursework.</li>
+          <li>Useful additions: electronic instrumentation or sensors and transducers; PCB design and prototyping; semiconductor devices, for work on thin-film front-end electronics.</li>
+        </ul>
+        <h5 class="expect-group">Biomedical engineering background</h5>
+        <ul class="expect-list">
+          <li>Coursework in biomedical instrumentation and biomedical signal processing, including amplifiers, filters and signal-conditioning circuits.</li>
+          <li>Laboratory coursework involving recording or analysing a physiological signal such as ECG, EEG or EMG is sufficient.</li>
+          <li>Useful additions: human physiology with some nervous-system coverage; biosensors and transducers; biomaterials.</li>
+        </ul>
+        <h5 class="expect-group">Good to have, but not required</h5>
+        <ul class="expect-list">
+          <li>Hands-on device fabrication or microfabrication, such as photolithography, thin-film processes or polymer device processing.</li>
+          <li>Exposure to electrochemistry or flexible and organic electronics.</li>
         </ul>
 
         <h4>What You Can Expect</h4>
@@ -540,6 +561,7 @@
           <li>Training and experience in conventional and thin-film microfabrication at world-class cleanroom facilities such as CeNSE.</li>
           <li>Work at the frontier of neuromodulation therapies, and on making them achievable in practice by engineering implantable devices.</li>
           <li>Opportunities to interact and build collaborations with clinicians, neurosurgeons and the surgical medical device industry.</li>
+          <li>Depending on the project, a chance to learn laboratory skills for working with living cells and tissues.</li>
         </ul>
       </div>
     </section>
